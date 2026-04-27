@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         VK AdBlocker
-// @version      2026-04-16
+// @version      2026-04-28
 // @author       Me
 // @match        https://vk.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vk.com
