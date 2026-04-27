@@ -16,7 +16,7 @@
 
         const itemCount = json.response.items.length;
         if (json.response && json.response.items) {
-            json.response.items = json.response.items.filter((item) => item.type != 'ads' && item.type != 'recommended_game');
+            json.response.items = json.response.items.filter((item) => item.type != 'ads' && item.type != 'recommended_game' && !item.author_ad);
         }
 
         const adsCount = itemCount - json.response.items.length;
