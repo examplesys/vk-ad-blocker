@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         VK AdBlocker
-// @version      2026-04-28
+// @version      2026-04-29
 // @author       Me
 // @match        https://vk.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vk.com
@@ -20,6 +20,8 @@
         }
 
         const adsCount = itemCount - json.response.items.length;
+        if (adsCount <= 0) return;
+
         console.log('[VK-Ad] Feed (Removed ' + adsCount + ' ads)');
     }
 
@@ -90,7 +92,7 @@
                 const originalJson = await response.clone().json();
                 const modified = { ...originalJson };
 
-                if (url.includes('newsfeed.getFeed')) {
+                if (url.includes('newsfeed.getFeed') || url.includes('method/wall.get?')) {
                     removeAdsFromFeedItems(modified);
                 }
 
