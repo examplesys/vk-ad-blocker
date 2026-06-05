@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         VK AdBlocker
-// @version      2026-04-29
+// @version      2026-05-06
 // @author       Me
 // @match        https://vk.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vk.com
@@ -16,7 +16,14 @@
 
         const itemCount = json.response.items.length;
         if (json.response && json.response.items) {
-            json.response.items = json.response.items.filter((item) => item.type != 'ads' && item.type != 'recommended_game' && !item.author_ad);
+            json.response.items = json.response.items.filter(
+                (item) =>
+                item.type != 'ads' &&
+                item.type != 'recommended_game' &&
+                item.type != 'videos_for_you' &&
+                !item.author_ad &&
+                !item.suggest_subscribe
+            );
         }
 
         const adsCount = itemCount - json.response.items.length;
